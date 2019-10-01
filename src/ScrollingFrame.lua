@@ -9,7 +9,13 @@ ScrollingFrame.validateProps = t.interface({
     listPadding = t.optional(t.UDim),
     padding = t.optional(t.number),
     LayoutOrder = t.optional(t.number),
+    Position = t.optional(t.UDim2),
+    Size = t.optional(t.UDim2),
 })
+
+ScrollingFrame.defaultProps = {
+    Size = UDim2.new(1, 0, 1, 0)
+}
 
 function ScrollingFrame:init()
 	self.height, self.setHeight = Roact.createBinding(0)
@@ -22,15 +28,15 @@ end
 function ScrollingFrame:render()
 	return StudioThemeAccessor.withTheme(function(theme, themeEnum)
 		return Roact.createElement("Frame", {
-			Size = UDim2.new(1, 0, 1, 0),
-			BorderSizePixel = 0,
-			BackgroundColor3 = theme:GetColor("MainBackground"),
-			BorderColor3 = theme:GetColor("Border"),
+            BorderSizePixel = 0,
+            BackgroundTransparency = 1,
+            ClipsDescendants = true,
 			LayoutOrder = self.props.LayoutOrder,
-			ClipsDescendants = true,
+			Size = self.props.Size,
+            Position = self.props.Position,
 		}, {
 			BarBackground = Roact.createElement("Frame", {
-				BackgroundColor3 = theme:GetColor("ScrollBarBackground"),
+				BackgroundColor3 = theme:GetColor(Enum.StudioStyleGuideColor.ScrollBarBackground),
 				Size = UDim2.new(0, 12, 1, 0),
 				AnchorPoint = Vector2.new(1, 0),
 				Position = UDim2.new(1, 0, 0, 0),

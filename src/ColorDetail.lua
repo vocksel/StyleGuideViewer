@@ -1,7 +1,7 @@
 local Roact = require(script.Parent.Modules.Roact)
 local t = require(script.Parent.Modules.t)
 local styles = require(script.Parent.styles)
-local TextLabel = require(script.Parent.TextLabel)
+local HeaderTextLabel = require(script.Parent.HeaderTextLabel)
 local Color = require(script.Parent.Color)
 local ListBox = require(script.Parent.ListBox)
 
@@ -35,7 +35,7 @@ function ColorDetail:render()
         LayoutOrder = self.props.LayoutOrder,
         BackgroundTransparency = 1,
     }, {
-        Name = Roact.createElement(TextLabel, {
+        Name = Roact.createElement(HeaderTextLabel, {
             Text = self.props.color.Name,
             LayoutOrder = 1,
             Size = UDim2.new(1, 0, 0, styles.TextSize),
