@@ -1,5 +1,6 @@
 local Roact = require(script.Parent.Modules.Roact)
 local t = require(script.Parent.Modules.t)
+local styles = require(script.Parent.styles)
 local TextLabel = require(script.Parent.TextLabel)
 local Color = require(script.Parent.Color)
 local ListBox = require(script.Parent.ListBox)
@@ -17,7 +18,7 @@ function ColorDetail:render()
     colors.Layout = Roact.createElement("UIListLayout", {
         SortOrder = Enum.SortOrder.LayoutOrder,
         FillDirection = Enum.FillDirection.Horizontal,
-        Padding = UDim.new(0, 16),
+        Padding = UDim.new(0, styles.BigPadding),
     })
 
     for i, modifier in ipairs(Enum.StudioStyleGuideModifier:GetEnumItems()) do
@@ -30,14 +31,14 @@ function ColorDetail:render()
 
     return Roact.createElement(ListBox, {
         useLazyResizing = true,
-        listPadding = UDim.new(0, 8),
+        listPadding = UDim.new(0, styles.Padding),
         LayoutOrder = self.props.LayoutOrder,
         BackgroundTransparency = 1,
     }, {
         Name = Roact.createElement(TextLabel, {
             Text = self.props.color.Name,
             LayoutOrder = 1,
-            Size = UDim2.new(1, 0, 0, 18),
+            Size = UDim2.new(1, 0, 0, styles.TextSize),
         }),
 
         Colors = Roact.createElement("Frame", {
