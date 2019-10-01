@@ -1,0 +1,33 @@
+{
+    "name": "style-guide-viewer",
+    "tree": {
+        "$className": "DataModel",
+
+        "HttpService": {
+            "$className": "HttpService",
+            "$properties": {
+                "HttpEnabled": true
+            }
+        },
+
+        "ReplicatedStorage": {
+            "$className": "ReplicatedStorage",
+            "StyleGuideViewer": {
+                "Modules": {
+                    "$className": "Folder",
+                    "Cryo": { "$path": "modules/Cryo" },
+                    "Roact": { "$path": "modules/Roact/src" },
+                    "t": { "$path": "modules/t/lib" }
+                },
+                "$path": "src/"
+            }
+        },
+
+        "ServerScriptService": {
+            "$className": "ServerScriptService",
+            "$properties": {
+                "LoadStringEnabled": true
+            }
+        }
+    }
+}
