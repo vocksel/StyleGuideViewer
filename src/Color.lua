@@ -1,5 +1,6 @@
 local Roact = require(script.Parent.Modules.Roact)
 local t = require(script.Parent.Modules.t)
+local colors = require(script.Parent.colors)
 local TextLabel = require(script.Parent.TextLabel)
 local StudioThemeAccessor = require(script.Parent.StudioThemeAccessor)
 
@@ -18,6 +19,8 @@ function Color:render()
             SizeConstraint = Enum.SizeConstraint.RelativeYY,
             LayoutOrder = self.props.LayoutOrder,
             BackgroundColor3 = theme:GetColor(self.props.color, self.props.modifier),
+            BorderSizePixel = 2,
+            BorderColor3 = colors.darken(theme:GetColor(Enum.StudioStyleGuideColor.MainBackground), 20),
         }, {
             ModifierName = Roact.createElement(TextLabel, {
                 Text = self.props.modifier.Name,
