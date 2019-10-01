@@ -1,4 +1,4 @@
-name = "CosmicKeyframes"
+name = "StyleGuideViewer"
 author = "David Minnerly"
 content_root = "src"
 version = "0.1.0"
