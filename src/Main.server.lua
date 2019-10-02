@@ -14,5 +14,24 @@ local widget do
 	widget.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 end
 
+do
+    local toolbar = plugin:CreateToolbar("Studio Style Guide")
+
+    local toggleAppView = toolbar:CreateButton(
+        "StyleGuideToggle",
+        "Toggles the view of all Studio style guide colors",
+        "",
+        "View colors"
+    )
+
+    toggleAppView.Click:Connect(function()
+
+    end)
+
+    toggleAppView.Click:Connect(function()
+        widget.Enabled = not widget.Enabled
+    end)
+end
+
 local app = Roact.createElement(App)
 Roact.mount(app, widget, "App")
