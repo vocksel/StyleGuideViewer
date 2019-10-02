@@ -1,7 +1,6 @@
 local Roact = require(script.Parent.Modules.Roact)
 local t = require(script.Parent.Modules.t)
 local colors = require(script.Parent.colors)
-local HeaderTextLabel = require(script.Parent.HeaderTextLabel)
 local TextLabel = require(script.Parent.TextLabel)
 local StudioThemeAccessor = require(script.Parent.StudioThemeAccessor)
 local styles = require(script.Parent.styles)
@@ -19,38 +18,27 @@ function Color:render()
         local color = theme:GetColor(self.props.color, self.props.modifier)
 
         return Roact.createElement("Frame", {
-            Size = UDim2.new(1, 0, 1, 0),
-            SizeConstraint = Enum.SizeConstraint.RelativeYY,
             LayoutOrder = self.props.LayoutOrder,
-            BackgroundColor3 = color,
-            BorderSizePixel = 2,
-            BorderColor3 = colors.darken(theme:GetColor(Enum.StudioStyleGuideColor.MainBackground), 20),
+            Size = UDim2.new(1, 0, 1, 0),
+            BackgroundTransparency = 1,
         }, {
             Layout = Roact.createElement("UIListLayout", {
                 SortOrder = Enum.SortOrder.LayoutOrder,
-                VerticalAlignment = Enum.VerticalAlignment.Center,
+                Padding = UDim.new(0, styles.Padding),
             }),
 
-            ModifierName = Roact.createElement(HeaderTextLabel, {
+            Color = Roact.createElement("Frame", {
                 LayoutOrder = 1,
-                Text = self.props.modifier.Name,
-                TextColor3 = Color3.fromRGB(255, 255, 255),
-                TextStrokeTransparency = 0,
-                TextStrokeColor3 = Color3.fromRGB(0, 0, 0),
-                Size = UDim2.new(1, 0, 0, styles.HeaderTextSize),
-                TextXAlignment = Enum.TextXAlignment.Center,
-                TextYAlignment = Enum.TextYAlignment.Center,
+                Size = UDim2.new(1, 0, 0.8, 0),
+                BackgroundColor3 = color,
+                BorderSizePixel = 2,
+                BorderColor3 = colors.darken(theme:GetColor(Enum.StudioStyleGuideColor.MainBackground), 20),
             }),
 
-            ColorValue = Roact.createElement(TextLabel, {
+            Meta = Roact.createElement(TextLabel, {
                 LayoutOrder = 2,
-                Text = ("(%i, %i, %i)"):format(color.r*255, color.g*255, color.b*255),
-                TextColor3 = Color3.fromRGB(255, 255, 255),
-                TextStrokeTransparency = 0,
-                TextStrokeColor3 = Color3.fromRGB(0, 0, 0),
-                Size = UDim2.new(1, 0, 0, styles.HeaderTextSize),
-                TextXAlignment = Enum.TextXAlignment.Center,
-                TextYAlignment = Enum.TextYAlignment.Center,
+                Text = ("%s (%i, %i, %i)"):format(self.props.modifier.Name, color.r*255, color.g*255, color.b*255),
+                Size = UDim2.new(1, 0, 0.2, 0),
             })
         })
     end)

@@ -13,12 +13,13 @@ ColorDetail.validateProps = t.interface({
 })
 
 function ColorDetail:render()
+    local totalModifiers = #Enum.StudioStyleGuideModifier:GetEnumItems()
     local colors = {}
 
-    colors.Layout = Roact.createElement("UIListLayout", {
+    colors.Layout = Roact.createElement("UIGridLayout", {
+        CellSize = UDim2.new(1/totalModifiers, -styles.Padding, 1, 0),
+        CellPadding = UDim2.new(0, styles.Padding, 0, styles.BigPadding),
         SortOrder = Enum.SortOrder.LayoutOrder,
-        FillDirection = Enum.FillDirection.Horizontal,
-        Padding = UDim.new(0, styles.BigPadding),
     })
 
     for i, modifier in ipairs(Enum.StudioStyleGuideModifier:GetEnumItems()) do
@@ -44,7 +45,7 @@ function ColorDetail:render()
         Colors = Roact.createElement("Frame", {
             LayoutOrder = 2,
             BackgroundTransparency = 1,
-            Size = UDim2.new(1, 0, 0, 100),
+            Size = UDim2.new(1, 0, 0, 140),
         }, colors),
     })
 end
