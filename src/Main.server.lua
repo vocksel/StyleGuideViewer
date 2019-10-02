@@ -1,28 +1,29 @@
 local Roact = require(script.Parent.Modules.Roact)
 local App = require(script.Parent.App)
+local config = require(script.Parent.config)
 
 local widget do
 	local info = DockWidgetPluginGuiInfo.new(
-		Enum.InitialDockState.Bottom,
+        Enum.InitialDockState.Bottom,
         true
-	)
-	local widgetName = "StudioStyleGuideViewer"
+    )
+
+	local widgetName = config.PLUGIN_NAME.."App"
 	widget = plugin:CreateDockWidgetPluginGui(widgetName, info)
 
 	widget.Name = widgetName
-	widget.Title = "Studio Style Guide Viewer"
+	widget.Title = config.DISPLAY_NAME
 	widget.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 end
 
 do
     local toolbar = plugin:CreateToolbar("Studio Style Guide")
 
-    local toggleAppView = toolbar:CreateButton(
-        "StyleGuideToggle",
-        "Toggles the view of all Studio style guide colors",
-        "",
-        "View colors"
-    )
+	local toggleAppView = toolbar:CreateButton(
+		"View colors",
+		"Toggles the view of all Studio style guide colors",
+		""
+	)
 
     toggleAppView.Click:Connect(function()
         widget.Enabled = not widget.Enabled
