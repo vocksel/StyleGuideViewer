@@ -4,8 +4,7 @@ local config = require(script.Parent.config)
 
 local widget do
 	local info = DockWidgetPluginGuiInfo.new(
-        Enum.InitialDockState.Bottom,
-        true
+        Enum.InitialDockState.Bottom
     )
 
 	local widgetName = config.PLUGIN_NAME.."App"
