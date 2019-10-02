@@ -25,10 +25,6 @@ do
     )
 
     toggleAppView.Click:Connect(function()
-
-    end)
-
-    toggleAppView.Click:Connect(function()
         widget.Enabled = not widget.Enabled
     end)
 end
