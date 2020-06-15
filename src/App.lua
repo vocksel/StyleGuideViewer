@@ -19,7 +19,7 @@ function App:getStyleGuideColors()
 
     if self.state.filter then
         return Cryo.List.filter(styleGuideColors, function(color)
-            return color.Name:lower():match(self.state.filter)
+            return color.Name:lower():match(self.state.filter:lower())
         end)
     else
         return styleGuideColors
